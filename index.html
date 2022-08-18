@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>StackDS</title>
+</head>
+<body>
+    <div class="header">
+        <img src="./images/6.jpg" alt="">
+        <h1>#Stack Data Structure</h1>
+    </div>
+    <div class="info">
+        <details>
+            <summary>Read and learn</summary>
+                <ul class="list-one">
+                    <li>
+                        A Stack is a linear Data Structure which operates in a 
+                        <abbr title="First In Last Out/ Last In First Out">FILO/LIFO</abbr> pattern.
+                    </li>
+                    <li>
+                        It behaves like a real world stack of objects. e.g. deck of cards or a stack of books.
+                     </li>
+                     <li>
+                        It allowes adding & removing elements in a particular order[LIFO/FILO].
+                     </li>
+                     <li>
+                        Arrays help us visualize it better.
+                     </li>
+                </ul>
+                <h3>Here are the standard mathods you'll use for stacks</h3>
+                <ol class="list-two">
+                    <li><span>Push()</span> :This places an item onto the stack. If 
+                        there's no place for a new item, the stack is considered an Overflow State.
+                     </li>
+                     <li><span>Pop()</span> :This returns the item at the top of the stack and then removes it.
+                        If pop is called when the stack is empty, the stack is considered an Underfloew State.
+                     </li>
+                     <li><span>isEmpty()</span> :This determines if the stack is empty or not.
+                     </li>
+                     <li><span>isFull()</span> :This determines if the stack id full or not.
+                     </li>
+                     <li><span>peek()</span> :This lets you view the item at a specific position.
+                     </li>
+                     <li><span>count()</span> :This lets you view the number of items present in the stack.
+                     </li>
+                     <li><span>change()</span> :This lets you change/update an item at a specific position.
+                     </li>
+                     <li><span>display()</span> :This lets you view all the items in the stack.
+                     </li>
+                </ol>    
+                <h3>Technical Examples:</h3>
+                <ul>
+                    <li>Undo functionality in editors/games/apps <span>.On click of the undo button the
+                         last task performed is popped of the stack of your project</span>
+                    </li>
+                    <li>The cache memory in web browsers<span>.Notice how the last visited web page loads faster.
+                    </span>
+                   </li>
+                </ul>
+
+        </details>
+    </div>
+    <div class="visuals">
+        <div class="abstract">
+            <h3>Abstract/Visual View</h3>
+            <div class="view">
+                <div class="books" id="book5">
+                    <span>index 5</span>  
+                    <div class="book1">
+                        <div class="ribbon1">
+                          <input readonly id="bookName5" value="Little red ridding hood" type="text">
+                        </div>
+                        <div class="bookCut">
+                        </div>
+                    </div> 
+                </div>
+                <div class="books" id="book4">
+                    <span>index 4</span>  
+                    <div class="book1">
+                        <div class="ribbon1">
+                          <input readonly id="bookName4" value="The three little pigs" type="text">
+                        </div>
+                        <div class="bookCut">
+                        </div>
+                    </div> 
+                </div>
+                <div class="books" id="book3">
+                    <span>index 3</span>  
+                    <div class="book1">
+                        <div class="ribbon1">
+                          <input readonly id="bookName3" value="Paddington"type="text">
+                        </div>
+                        <div class="bookCut">
+                        </div>
+                    </div> 
+                </div>
+                <div class="books" id="book2">
+                    <span>index 2</span>  
+                    <div class="book1">
+                        <div class="ribbon1">
+                          <input readonly id="bookName2" value="The cat in the hat" type="text">
+                        </div>
+                        <div class="bookCut">
+                        </div>
+                    </div> 
+                </div>
+                <div class="books" id="book1">
+                    <span>index 1</span>  
+                    <div class="book1">
+                        <div class="ribbon1">
+                          <input readonly id="bookName1" value="Cindarella" type="text">
+                        </div>
+                        <div class="bookCut">
+                        </div>
+                    </div> 
+                </div>
+                <div class="books" id="book0">
+                    <span>index 0</span>  
+                    <div class="book1">
+                        <div class="ribbon1">
+                          <input readonly id="bookName0" value="The Ugly Duckling" type="text">
+                        </div>
+                        <div class="bookCut">
+                        </div>
+                    </div> 
+                </div>
+                
+            </div>
+            
+        </div>
+        <div class="implementation">
+            
+            <h3>Implementation/Code View</h3>
+                
+                 <div class="code" id="js">
+                    <div class="language">
+                        <button class="c-btn" onclick="addCCode()">C++</button>
+                        <button class="js-btn" onclick="addJsCode()">JavaScript</button>
+                      </div>
+                    <!-- <img src="./images/display.PNG" alt=""> -->
+    <pre><code>
+#include &ltiostream&gt
+    using namespace std;
+    
+    #include &ltstring.h&gt
+    class Stack{
+        private:
+             string arr[6]={"The Ugly Duckling",
+             "Cindarella","The cat in the hat",
+             "Paddington","The three little pigs",
+             "Little red ridding hood"};
+            
+            public:
+    
+                void display(){
+                    cout&lt&lt"All the books in the stack: "&lt&ltendl;
+                
+                    for(int i = 5; i >=0;i--){  //print from bottom up
+                    cout&lt&ltarr[i]&lt&lt" "&lt&ltendl;          
+                  }        
+            }          
+         };
+    int main(int argc, char** argv) {
+        
+        Stack books;
+        books.display();
+        return 0;
+    }</code></pre>
+                 </div>
+        </div>
+    </div>
+    <div class="btn-heading">
+        <h2>Click on a method to see it in action ;)</h2>
+    </div>
+    <div class="method-btns">
+        <button id="display-btn"class="btn-5">display()</button>
+        <button id="push-btn"class="btn-13">push()</button>
+        <button id="pop-btn"class="btn-14">pop()</button>
+        <button id="empty-btn"class="btn-8">isEmpty()</button>
+        <button id="full-btn"class="btn-10">isFull()</button>
+        <button id="peek-btn"class="btn-12"><span>a boo! :)</span><span>peek()</span></button>
+        <button id="count-btn"class="btn-">count()</button>
+        <button>change()</button>
+        <button>Reset</button>
+
+    </div>
+
+    <div class="onbtn">
+
+    </div>
+    .
+
+    
+    <script src="scripts.js"></script>
+</body>
+</html>
