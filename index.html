@@ -67,61 +67,66 @@
         <div class="abstract">
             <h3>Abstract/Visual View</h3>
             <div class="view">
-                <div class="books" id="book5">
+
+                <div class="books hide" >
                     <span>index 5</span>  
-                    <div class="book1">
+                    <div class="book1" id="book5">
                         <div class="ribbon1">
-                          <input readonly id="bookName5" value="Little red ridding hood" type="text">
+                          <input readonly id="bookName5" name="abook" value="" type="text">
                         </div>
                         <div class="bookCut">
                         </div>
                     </div> 
                 </div>
-                <div class="books" id="book4">
+
+                <div class="books" >
                     <span>index 4</span>  
-                    <div class="book1">
+                    <div class="book1" id="book4">
                         <div class="ribbon1">
-                          <input readonly id="bookName4" value="The three little pigs" type="text">
+                          <input readonly id="bookName4" name="abook" value="" type="text">
                         </div>
                         <div class="bookCut">
                         </div>
                     </div> 
                 </div>
-                <div class="books" id="book3">
+
+                <div class="books" >
                     <span>index 3</span>  
-                    <div class="book1">
+                    <div class="book1" id="book3">
                         <div class="ribbon1">
-                          <input readonly id="bookName3" value="Paddington"type="text">
+                          <input readonly id="bookName3" name="abook" value=""type="text">
                         </div>
                         <div class="bookCut">
                         </div>
                     </div> 
                 </div>
-                <div class="books" id="book2">
+
+                <div class="books" >
                     <span>index 2</span>  
-                    <div class="book1">
+                    <div class="book1" id="book2">
                         <div class="ribbon1">
-                          <input readonly id="bookName2" value="The cat in the hat" type="text">
+                          <input readonly id="bookName2" name="abook" value="" type="text">
                         </div>
                         <div class="bookCut">
                         </div>
                     </div> 
                 </div>
-                <div class="books" id="book1">
+
+                <div class="books" >
                     <span>index 1</span>  
-                    <div class="book1">
+                    <div class="book1" id="book1">
                         <div class="ribbon1">
-                          <input readonly id="bookName1" value="Cindarella" type="text">
+                          <input readonly id="bookName1" name="abook" value="" type="text">
                         </div>
                         <div class="bookCut">
                         </div>
                     </div> 
                 </div>
-                <div class="books" id="book0">
+                <div class="books" >
                     <span>index 0</span>  
-                    <div class="book1">
+                    <div class="book1" id="book0">
                         <div class="ribbon1">
-                          <input readonly id="bookName0" value="The Ugly Duckling" type="text">
+                          <input readonly id="bookName0" name="abook" value="" type="text">
                         </div>
                         <div class="bookCut">
                         </div>
@@ -138,37 +143,179 @@
                  <div class="code" id="js">
                     <div class="language">
                         <button class="c-btn" onclick="addCCode()">C++</button>
-                        <button class="js-btn" onclick="addJsCode()">JavaScript</button>
                       </div>
                     <!-- <img src="./images/display.PNG" alt=""> -->
-    <pre><code>
-#include &ltiostream&gt
+    
+<pre><code id="the-code"><h4>//Copy and run this in your c++ code editor</h4>
+#include&lt;iostream&gt;
+#include&lt;string&gt;
+    
     using namespace std;
     
-    #include &ltstring.h&gt
     class Stack{
         private:
-             string arr[6]={"The Ugly Duckling",
-             "Cindarella","The cat in the hat",
-             "Paddington","The three little pigs",
-             "Little red ridding hood"};
+            int top;
+            int arr[5];
             
             public:
-    
-                void display(){
-                    cout&lt&lt"All the books in the stack: "&lt&ltendl;
+                Stack(){
+                    top=-1;
+                    
+                    for(int i = 0;i <5; i++){
+                        arr[i]=0;
+                    }
+                    
+                }
+        //methods
+            bool isEmpty(){
+                if(top==-1)
+                    return true;
+                else
+                    return false;
+            }
+            
+            bool isFull(){
+                if(top==4)
+                    return true;
+                else
+                    return false;
+            }
+            void push(int val){
+                if(isFull())
+                    cout&lt;&lt;"Stack overflow";
+                else{
+                    top++;
+                    arr[top]=val;
+                }
                 
-                    for(int i = 5; i >=0;i--){  //print from bottom up
-                    cout&lt&ltarr[i]&lt&lt" "&lt&ltendl;          
-                  }        
-            }          
-         };
-    int main(int argc, char** argv) {
-        
-        Stack books;
-        books.display();
-        return 0;
-    }</code></pre>
+            }
+            int pop(){
+                if(isEmpty()){
+                    cout&lt;&lt;"Stack underflow";
+                    return 0;
+                }
+                    
+                else{
+                    int popVal = arr[top];
+                    arr[top]=0;
+                    top--;
+                    return popVal;
+                }
+            }	
+                
+            int count(){
+                return (top+1);
+            }
+            
+            int peek(int pos){
+                
+                if(isEmpty()){
+                    cout&lt;&lt;"Stack underflow";
+                    return 0;
+                }	
+                else{
+                    return arr[pos];
+                }
+            }	
+                
+            void change(int pos,int val){
+                arr[pos]=val;
+                cout&lt;&lt;"Value changes at location"&lt;&lt;pos&lt;&lt;endl;
+            }
+            
+            void display(){
+                cout&lt;&lt;"All the values in the stack: "&lt;&lt;endl;
+                for(int i = 4; i >=0;i--){
+                    cout&lt;&lt;arr[i]&lt;&lt;" ";
+                }
+            
+            }
+    };
+    
+    
+    
+    
+    int main(){
+       
+           Stack stk;
+           int option,position,value;
+           
+           do{
+           
+               cout&lt;&lt;"\nChoose an operation to perform on the stack- Enter 0 to exit:"&lt;&lt;endl;
+               cout&lt;&lt;"1. Push"&lt;&lt;endl;
+               cout&lt;&lt;"2. Pop"&lt;&lt;endl;
+               cout&lt;&lt;"3. isEmpty()"&lt;&lt;endl;
+               cout&lt;&lt;"4. isFull()"&lt;&lt;endl;
+               cout&lt;&lt;"5. peek()"&lt;&lt;endl;
+               cout&lt;&lt;"6. count()"&lt;&lt;endl;
+               cout&lt;&lt;"7. change()"&lt;&lt;endl;
+               cout&lt;&lt;"8. display()"&lt;&lt;endl;
+               cout&lt;&lt;"9. Clear Screen"&lt;&lt;endl&lt;&lt;endl;
+               
+               cin&gt;&gt;option;
+               
+               switch(option){
+                   case 0:
+                       break;
+                   case 1:
+                       cout&lt;&lt;"Enter a value to push in the stack: ";
+                       cin&gt;&gt;value;
+                       stk.push(value);
+                       break;
+                   case 2:
+                       cout&lt;&lt;"Pop a value off the stack"&lt;&lt;endl;
+                       stk.pop();
+                       break;
+                   case 3:
+                       cout&lt;&lt;"Check if the stack is empty"&lt;&lt;endl;
+                       if(stk.isEmpty()){
+                           cout&lt;&lt;"Stack is empty"&lt;&lt;endl;
+                       }else{
+                           cout&lt;&lt;"Stack is not empty"&lt;&lt;endl;
+                       }
+                       break;	
+                   case 4:
+                       cout&lt;&lt;"Check if the stack is full"&lt;&lt;endl;
+                       if(stk.isFull()){
+                           cout&lt;&lt;"Stack is full"&lt;&lt;endl;
+                       }else{
+                           cout&lt;&lt;"Stack is not full"&lt;&lt;endl;
+                       }
+                       break;
+                   case 5:
+                       cout&lt;&lt;"Enter the position you want to peek: ";
+                       cin&gt;&gt;position;
+                       cout&lt;&lt;"The value in postion"&lt;&lt;position&lt;&lt;" is "&lt;&lt;stk.peek(position)&lt;&lt;endl;
+                               break;
+                           case 6:
+                               cout&lt;&lt;"The number of values in the stack is "&lt;&lt;stk.count()&lt;&lt;endl;
+                               break;
+                           case 7:
+                               cout&lt;&lt;"Enter the position of the item you want to change: ";
+                               cin&gt;&gt;position;
+                               cout&lt;&lt;"\nEnter the new value: ";
+                               cin&gt;&gt;value;
+                               stk.change(position,value);
+                               break;
+                           case 8:
+                               cout&lt;&lt;"View the stack"&lt;&lt;endl;
+                               stk.display();
+                               break;
+                               system("cls");
+                           case 9:
+                               break;
+                        default:
+                               cout&lt;&lt;"Enter options 1 - 9"&lt;&lt;endl;
+                       }
+                       
+                       
+                }while(option !=0);
+                
+                
+                return 0;
+            }    
+}</code></pre>
                  </div>
         </div>
     </div>
@@ -183,17 +330,27 @@
         <button id="full-btn"class="btn-10">isFull()</button>
         <button id="peek-btn"class="btn-12"><span>a boo! :)</span><span>peek()</span></button>
         <button id="count-btn"class="btn-">count()</button>
-        <button>change()</button>
-        <button>Reset</button>
+        <button id="change-btn">change()</button>
+        <button id="reset-btn">Reset</button>
 
     </div>
-
-    <div class="onbtn">
-
+    <div class="story hide">
+	
+<div class="page">
+    <div class="page__container">
+      <a href="#popup-article" class="open-popup">open popup</a>
     </div>
-    .
-
-    
+  </div>
+  <div id="popup-article" class="popup">
+    <div class="popup__container">
+      <a href="#" class="popup__close">
+        <span class="screen-reader">close</span>
+      </a>  
+      <div class="popup__content">
+      </div>
+    </div>
+  </div>
+    </div>
     <script src="scripts.js"></script>
 </body>
 </html>
